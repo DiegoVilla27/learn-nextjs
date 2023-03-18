@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// @import './variables/variables';
+// @import './colors/colors';
+// @import './fonts/fonts';
+// @import './mixins/mixins';
+@import './general/general';
+@import '../shared/styles.scss';
