@@ -7,4 +7,9 @@ export const App = ({ Component, pageProps }) => {
   )
 }
 
+App.propTypes = {
+  Component: PropTypes.Component,
+  pageProps: PropTypes.object
+}
+
 export default App;

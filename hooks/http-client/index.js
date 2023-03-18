@@ -1,5 +1,5 @@
 
-export const useHttpClient = () => {
+export const hookHttpClient = () => {
   const callEndpoint = async (axiosCall) => {
     let res = {};
     try {

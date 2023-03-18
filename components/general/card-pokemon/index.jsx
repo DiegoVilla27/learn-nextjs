@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React from 'react';
 import { routes } from '../../../routes';
 
-export default function PokemonCard({ pokemon }) {
+const PokemonCard = ({ pokemon }) => {
 	const { pokemon_species: { name } } = pokemon;
 
 	return (
@@ -11,3 +11,9 @@ export default function PokemonCard({ pokemon }) {
       </h2>
 	);
 };
+
+PokemonCard.propTypes = {
+  pokemon: PropTypes.object
+}
+
+export default PokemonCard;

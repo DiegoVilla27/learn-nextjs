@@ -1,12 +1,12 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import React from 'react';
-import { useAsync } from '../../hooks/async-fetch';
-import { useHttpClient } from '../../hooks/http-client';
+import { hookAsync } from '../../hooks/async-fetch';
+import { hookHttpClient } from '../../hooks/http-client';
 import Layout from '../../layouts';
 import { getPokemonByNameSvc, getPokemonsSvc } from '../../services/pokemon.service';
 
-export default function PokemonScreen({ pokemon }) {
+const PokemonScreen = ({ pokemon }) => {
 
   const {
     name,
@@ -24,10 +24,16 @@ export default function PokemonScreen({ pokemon }) {
 	);
 }
 
+PokemonScreen.propTypes = {
+  pokemon: PropTypes.object
+}
+
+export default PokemonScreen;
+
 export async function getStaticPaths() {
   let pokemons = [];
-  const { callEndpoint } = useHttpClient();
-  const { asyncFetch } = useAsync();
+  const { callEndpoint } = hookHttpClient();
+  const { asyncFetch } = hookAsync();
 
   await asyncFetch(
     async () => await callEndpoint(getPokemonsSvc()),
@@ -50,8 +56,8 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   let pokemon = [];
-  const { callEndpoint } = useHttpClient();
-  const { asyncFetch } = useAsync();
+  const { callEndpoint } = hookHttpClient();
+  const { asyncFetch } = hookAsync();
 
   await asyncFetch(
     async () => await callEndpoint(getPokemonByNameSvc(params['pokemon'])),

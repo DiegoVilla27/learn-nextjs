@@ -21,11 +21,5 @@
     "postcss": "^8.4.21",
     "sass": "^1.59.3",
     "tailwindcss": "^3.2.7"
-  },
-  "lint-staged": {
-    "*.(js,jsx,ts,tsx)": [
-      "eslint . --fix",
-      "prettier --write"
-    ]
   }
 }

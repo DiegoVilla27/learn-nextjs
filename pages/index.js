@@ -1,16 +1,16 @@
 import Head from 'next/head';
 import React from 'react';
 import PokemonCard from '../components/general/card-pokemon';
-import { useAsync } from '../hooks/async-fetch';
-import { useHttpClient } from '../hooks/http-client';
+import { hookAsync } from '../hooks/async-fetch';
+import { hookHttpClient } from '../hooks/http-client';
 import Layout from '../layouts';
 import { getPokemonsSvc } from '../services/pokemon.service';
 
-export default function HomeScreen({ pokemons }) {
+const HomeScreen = ({ pokemons }) => {
   return (
     <Layout>
       <Head>
-        <title>Home</title>
+        <title>Home Pokemons</title>
       </Head>
       <section>
         {pokemons.map(pokemon => (<PokemonCard key={pokemon.entry_number} pokemon={pokemon} />))}
@@ -19,10 +19,16 @@ export default function HomeScreen({ pokemons }) {
   )
 }
 
+HomeScreen.propTypes = {
+  pokemons: PropTypes.array
+}
+
+export default HomeScreen;
+
 export async function getStaticProps() {
   let pokemons = [];
-  const { callEndpoint } = useHttpClient();
-  const { asyncFetch } = useAsync();
+  const { callEndpoint } = hookHttpClient();
+  const { asyncFetch } = hookAsync();
 
   await asyncFetch(
     async () => await callEndpoint(getPokemonsSvc()),
