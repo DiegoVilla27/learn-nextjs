@@ -5,6 +5,7 @@ import { hookAsync } from '../../hooks/async-fetch';
 import { hookHttpClient } from '../../hooks/http-client';
 import Layout from '../../layouts';
 import { getPokemonByNameSvc, getPokemonsSvc } from '../../services/pokemon.service';
+import PropTypes from 'prop-types';
 
 const PokemonScreen = ({ pokemon }) => {
 
